@@ -22,7 +22,6 @@ date = str(datetime.date.today())
 degree = 'B.S.'
 college = 'CSU Stanislaus'
 
-
 #FOR COMPANY
 recipients_name = 'Whoever May Receive This'
 recipients_job_title = 'Reviewer'
@@ -80,18 +79,13 @@ def make_docx():
     document.add_paragraph(make_cover_letter())
     file_name = str(company_name)+'.docx'
     document.save(file_name)
-    #"puppyFolder\\"+file
-    #source =      f"C:\\Users\\Christian Alameda\\Documents\\nonSchool\\LinkedInPictures\\CoverLetter\\"+ str(company_name) + ".docx"
-    #destination = f"C:\\Users\\Christian Alameda\\Documents\\nonSchool\\LinkedInPictures\\CoverLetter\\cover_letters"
-    #dest = shutil.move(source, destination)
+    
     path = "cover_letters"
 
     if not os.path.exists(path):
         os.makedirs(path)
-    #C:\Users\Christian Alameda\Documents\nonSchool\linkedInPapers\coverLetter\maker.py
     
-    os.replace(f"C:/Users/Christian Alameda/Documents/nonSchool/linkedInPapers/coverLetter/"+file_name, f"C:/Users/Christian Alameda/Documents/nonSchool/linkedInPapers/coverLetter/cover_letters/"+file_name)
-    
+    os.replace(file_name, 'cover_letters/'+file_name)
     
 def split_txt():
     #SPLITS TXT DOCUMENT INTO WORDS TO PUT INTO A LIST
@@ -103,10 +97,7 @@ def split_txt():
     return list_of_words
 
 def make_pdf():
-    doc = Document()
-    doc.add_heading(make_cover_letter(),0)
-    doc.save('report.pdf')
-    #convert("cover_letter.docx", "report.pdf")
+    pass
 
 if __name__ == "__main__":
     make_docx()
