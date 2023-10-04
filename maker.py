@@ -1,10 +1,15 @@
 from fpdf import FPDF
 from docx2pdf import convert
-from docx import Document
 import docx
+from docx import Document
+
+import datetime
+import time
 
 import os
 import re
+import shutil
+import random
 
 #Unchanging variables
 your_name = 'Christian Alameda'
@@ -12,19 +17,22 @@ your_address = '3516 Beachler Drive'
 city_state_zip = 'Modesto, California, 95356'
 email_address = 'cdalamed@gmail.com'
 phone_number = '1-(209)-496-5686'
-date = 'July 17 2023'
+date = str(datetime.date.today())
 #SCHOOLING
 degree = 'B.S.'
 college = 'CSU Stanislaus'
 
-#Changing variables
+
 #FOR COMPANY
 recipients_name = 'Whoever May Receive This'
 recipients_job_title = 'Reviewer'
-company_name = 'JPMorgan Chase & Co.'
-company_address = '2390 El Camino Real, Unit 110'
-city_state_zip_1 = 'Palo Alto, California, 94306'
-#for job description
+
+#CHANGING VARIABLES
+company_name = 'Indian' + str(random.randrange(0,1000))
+company_address = 'LA'
+city_state_zip_1 = 'Place'
+
+#FOR JOB DESCRIPTION
 cs_job_title = 'Software Engineering Summer Internship'
 company_website = 'Handshake'
 
@@ -36,15 +44,12 @@ def make_cover_letter():
     {email_address}
     {phone_number}
     {date}
-    \n
-    {recipients_name}
-    {recipients_job_title}
+    
     {company_name}
     {company_address}
     {city_state_zip_1}
-    \n
 
-    Dear {recipients_name},
+    Dear {recipients_job_title},
 
     I am writing to express my strong interest in the {cs_job_title} position at {company_name}, as advertised on {company_website}. With a passion for computer science and a proven track record of success in software development, I am confident in my ability to contribute to your team and help drive innovation at {company_name}.
 
@@ -71,9 +76,23 @@ def make_txt():
         f.write(make_cover_letter())
 
 def make_docx():
-    with open('cover_letter.docx', 'w') as f:
-        f.write(make_cover_letter())
+    document = Document()
+    document.add_paragraph(make_cover_letter())
+    file_name = str(company_name)+'.docx'
+    document.save(file_name)
+    #"puppyFolder\\"+file
+    #source =      f"C:\\Users\\Christian Alameda\\Documents\\nonSchool\\LinkedInPictures\\CoverLetter\\"+ str(company_name) + ".docx"
+    #destination = f"C:\\Users\\Christian Alameda\\Documents\\nonSchool\\LinkedInPictures\\CoverLetter\\cover_letters"
+    #dest = shutil.move(source, destination)
+    path = "cover_letters"
 
+    if not os.path.exists(path):
+        os.makedirs(path)
+    #C:\Users\Christian Alameda\Documents\nonSchool\linkedInPapers\coverLetter\maker.py
+    
+    os.replace(f"C:/Users/Christian Alameda/Documents/nonSchool/linkedInPapers/coverLetter/"+file_name, f"C:/Users/Christian Alameda/Documents/nonSchool/linkedInPapers/coverLetter/cover_letters/"+file_name)
+    
+    
 def split_txt():
     #SPLITS TXT DOCUMENT INTO WORDS TO PUT INTO A LIST
     list_of_words = []
@@ -84,20 +103,10 @@ def split_txt():
     return list_of_words
 
 def make_pdf():
-    """x = split_txt()
-    pdf = FPDF()
-    pdf.add_page()
-    pdf.set_font('helvetica', size=12)
-    for i in x:
-        ten_words = ""
-        ten_words = ten_words + i
-        pdf.cell(txt=ten_words)
-    pdf.output("hello_world.pdf")"""
-    """doc.save("cover_letter.docx")"""
     doc = Document()
-    doc.add_heading('Report',0)
-    doc.save('report.docx')
+    doc.add_heading(make_cover_letter(),0)
+    doc.save('report.pdf')
     #convert("cover_letter.docx", "report.pdf")
 
 if __name__ == "__main__":
-    make_pdf()
+    make_docx()
