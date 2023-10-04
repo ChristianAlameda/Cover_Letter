@@ -5,15 +5,16 @@
 Things you'll need to download/install
 
 using pip: 
-pip install fpdf
-pip install docx2pdf
-pip install docx
-pip install shutil
-pip install datetime
+
+1. pip install fpdf
+2. pip install docx2pdf
+3. pip install docx
+4. pip install shutil
+5. pip install datetime
 
 linux:
-sudo apt install fpdf
-sudo apt install docx2pdf
-sudo apt install docx
-sudo apt install shutil
-sudo apt install datetime
+1. sudo apt install fpdf
+2. sudo apt install docx2pdf
+3. sudo apt install docx
+4. sudo apt install shutil
+5. sudo apt install datetime
