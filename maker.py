@@ -1,15 +1,11 @@
 from fpdf import FPDF
 from docx2pdf import convert
-import docx
 from docx import Document
 
 import datetime
 import time
 
 import os
-import re
-import shutil
-import random
 
 #Unchanging variables
 your_name = 'Christian Alameda'
@@ -19,7 +15,7 @@ email_address = 'cdalamed@gmail.com'
 phone_number = '1-(209)-496-5686'
 date = str(datetime.date.today())
 #SCHOOLING
-degree = 'B.S.'
+degree = 'B.S. in Computer Science'
 college = 'CSU Stanislaus'
 
 
@@ -28,13 +24,13 @@ recipients_name = 'Whoever May Receive This'
 recipients_job_title = 'Reviewer'
 
 #CHANGING VARIABLES
-company_name = 'Indian' + str(random.randrange(0,1000))
-company_address = 'LA'
-city_state_zip_1 = 'Place'
+company_name = 'Desert Research Institute'
+company_address = ''
+city_state_zip_1 = ''
 
 #FOR JOB DESCRIPTION
-cs_job_title = 'Software Engineering Summer Internship'
-company_website = 'Handshake'
+cs_job_title = 'Software Engineering Job'
+company_website = 'Zip Recruiter'
 
 def make_cover_letter():
     x = f"""
@@ -80,12 +76,6 @@ def make_docx():
     document.add_paragraph(make_cover_letter())
     file_name = str(company_name)+'.docx'
     document.save(file_name)
-
-    #"puppyFolder\\"+file
-    #source =      f"C:\\Users\\Christian Alameda\\Documents\\nonSchool\\LinkedInPictures\\CoverLetter\\"+ str(company_name) + ".docx"
-    #destination = f"C:\\Users\\Christian Alameda\\Documents\\nonSchool\\LinkedInPictures\\CoverLetter\\cover_letters"
-    #dest = shutil.move(source, destination)
-
     path = "cover_letters"
 
     if not os.path.exists(path):
@@ -104,17 +94,9 @@ def split_txt():
     return list_of_words
 
 def make_pdf():
-
     pass
 
 if __name__ == "__main__":
     make_docx()
 
-    doc = Document()
-    doc.add_heading(make_cover_letter(),0)
-    doc.save('report.pdf')
-    #convert("cover_letter.docx", "report.pdf")
-
-if __name__ == "__main__":
-    make_docx()
 
