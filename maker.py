@@ -1,13 +1,12 @@
 from fpdf import FPDF
 from docx2pdf import convert
 from docx import Document
-
 import datetime
 import time
-
 import os
 
-#Unchanging variables
+######################
+# Unchanging variables
 your_name = 'Christian Alameda'
 your_address = '3516 Beachler Drive'
 city_state_zip = 'Modesto, California, 95356'
@@ -17,20 +16,30 @@ date = str(datetime.date.today())
 #SCHOOLING
 degree = 'B.S. in Computer Science'
 college = 'CSU Stanislaus'
-
-
 #FOR COMPANY
 recipients_name = 'Whoever May Receive This'
 recipients_job_title = 'Reviewer'
+#######################
 
+#######################
 #CHANGING VARIABLES
 company_name = 'Desert Research Institute'
 company_address = ''
 city_state_zip_1 = ''
-
 #FOR JOB DESCRIPTION
-cs_job_title = 'Software Engineering Job'
+
+jobs = ['Full-Stack Web Developer', #jobs I'd be fine with
+        'Frontend Web Developer', 
+        'Backend Web Developer',
+        'Software Developer',
+        'Data Analyst',
+        'Mobile App Developer',
+        'Game Developer',
+        'DevOps Engineer'
+        ]
+cs_job_title = 'Full-Stack Web Developer'
 company_website = 'Zip Recruiter'
+#######################
 
 def make_cover_letter():
     x = f"""
